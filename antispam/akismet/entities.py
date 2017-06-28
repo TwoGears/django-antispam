@@ -148,7 +148,7 @@ class Comment:
         try:
             comment_timestamp = self.created.timestamp()
         except AttributeError:
-            comment_timestamp = (self.created - datetime(1970, 1, 1)) / timedelta(seconds=1)
+            comment_timestamp = (self.created - datetime(1970, 1, 1)).total_seconds() / timedelta(seconds=1).total_seconds()
 
         params = {
             'comment_type': self.type,
