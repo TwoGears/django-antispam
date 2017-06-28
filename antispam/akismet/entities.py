@@ -145,15 +145,11 @@ class Comment:
 
         :rtype dict
         """
-        try:
-            comment_timestamp = self.created.timestamp()
-        except AttributeError:
-            comment_timestamp = (self.created - datetime(1970, 1, 1)).total_seconds() / timedelta(seconds=1).total_seconds()
 
         params = {
             'comment_type': self.type,
             'comment_content': self.content,
-            'comment_date': comment_timestamp,
+            'comment_date': self.created,
             'permalink': self.permalink,
         }
 
